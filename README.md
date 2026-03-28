@@ -86,3 +86,58 @@ Each file follows the same format:
 - 1 minute: Skim the top of this README to see what the portfolio covers.
 - 1 minute: Open `01_state_anchor.md` and skim the goal, example, and notes.
 - 1 minute: Open any other file (e.g., `03_multi_agent_flow.md`) to see how I think about multi‑agent prompts and evaluation.
+
+
+## Taxonomy: Patterns & Workflows
+
+This portfolio organizes prompts into four semantic categories:
+
+### Patterns
+- **State Anchor Prompt** (`01_state_anchor.md`): Maintain role consistency
+- **Constraint Gate** (`02_constraint_gate.md`): Enforce non-negotiable rules
+- **Parametric Constraints** (`04_parametric_constraint.md`): Tune behavior along a dial
+
+### Workflows
+- **Multi-Agent Orchestration** (`03_multi_agent_flow.md`): Sequential agent cooperation
+- **Error Recovery** (`05_error_recovery.md`): Graceful failure handling
+
+### Rubrics
+Each prompt includes a **pass/fail evaluation rubric**:
+- Does the output respect constraints?
+- Does the output stay on-topic and in-role?
+- Is uncertainty handled gracefully?
+
+### Playbooks
+See `specs/` folder for machine-readable evaluation specifications (YAML/JSON) that can be used to assess prompt outputs programmatically.
+
+---
+
+## Evaluation Specs & CLI
+
+To evaluate a prompt output against a rubric:
+
+```bash
+python -m portfolio.eval specs/example.yaml --input "<prompt>" --output "<model response>"
+```
+
+Specs live in `specs/` and follow this structure:
+
+```yaml
+name: "State Anchor Evaluation"
+metrics:
+  - name: "role_consistency"
+    type: "boolean"
+    description: "Did the assistant stay in role?"
+  - name: "scope_adherence"
+    type: "boolean"
+    description: "Did the assistant respect boundaries?"
+  - name: "helpfulness"
+    type: "score"
+    min: 0
+    max: 5
+rules:
+  - if: "role_consistency == false"
+    then: "pass = false"
+```
+
+See `specs/example.yaml` for a complete example.
