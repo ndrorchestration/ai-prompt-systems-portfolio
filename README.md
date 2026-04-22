@@ -1,9 +1,13 @@
+> **Governance:** DGAF / Agent Amethyst — Yes. This portfolio is curated under DGAF evaluation standards. IP-safe samples only; governed prompts reference [DGAF-Framework](https://github.com/Flickerflash/DGAF-Framework).
+
+> **Status: Stable — actively maintained.** Commit gaps reflect curation cadence, not abandonment. New samples added when eval-validated.
+
 ## Quick Overview (In Plain Language)
 
 This repo is my **AI Prompt Engineering Portfolio**.
 
 In simple terms:
-- It collects real prompts I’ve designed for different use cases (agents, apps, workflows).
+- It collects real prompts I've designed for different use cases (agents, apps, workflows).
 - It shows how I structure system prompts, instructions, and guardrails.
 - It includes example tasks and model outputs so you can see how the prompts actually perform.
 
@@ -12,7 +16,7 @@ Right now this is an **active work-in-progress**:
 - Others are early drafts or experiments.
 - The goal is to make it easy for you to scan how I think about reliability, safety, and clarity in prompt design.
 
-If you’re a recruiter or engineer:
+If you're a recruiter or engineer:
 - Start by skimming one or two prompts in the `systems/` or `examples/` folders.
 - Look for my comments and evaluation notes to see how I debug and improve prompts.
 - Use this repo together with **junior-apogee-app** to see how prompts flow into evaluation.
@@ -141,3 +145,9 @@ rules:
 ```
 
 See `specs/example.yaml` for a complete example.
+
+## Related Projects
+
+- [DGAF-Framework](https://github.com/Flickerflash/DGAF-Framework) — governance spine
+- [junior-apogee-app](https://github.com/Flickerflash/junior-apogee-app) — primary agent evaluation platform
+- [resumeapex-eval](https://github.com/Flickerflash/resumeapex-eval) — flagship benchmark
