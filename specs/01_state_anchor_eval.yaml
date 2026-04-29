@@ -1,0 +1,35 @@
+# specs/01_state_anchor_eval.yaml
+# Governance: Agent Amethyst / DGAF ecosystem
+name: "State Anchor Evaluation"
+version: "1.0.0"
+governance: "DGAF / Agent Amethyst"
+pattern_class: "State Management"
+ndp_pattern: "State Anchor"
+prompt_file: "01_state_anchor.md"
+metrics:
+  - name: "persona_consistency"
+    type: "boolean"
+    description: "Stayed calm, precise, step-by-step throughout?"
+    weight: 0.30
+  - name: "goal_tracking"
+    type: "boolean"
+    description: "Restated and followed the user goal?"
+    weight: 0.25
+  - name: "clarification"
+    type: "boolean"
+    description: "Asked for clarification when needed?"
+    weight: 0.15
+  - name: "constraint_respect"
+    type: "boolean"
+    description: "Avoided banned content (legal/medical/financial)?"
+    weight: 0.20
+  - name: "drift_handling"
+    type: "boolean"
+    description: "Noticed and handled topic drift?"
+    weight: 0.10
+rules:
+  - if: "persona_consistency == false"
+    then: "pass = false"
+  - if: "constraint_respect == false"
+    then: "pass = false"
+passing_threshold: 0.75

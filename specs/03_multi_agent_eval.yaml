@@ -1,0 +1,27 @@
+# specs/03_multi_agent_eval.yaml
+# Governance: Agent Amethyst / DGAF ecosystem
+name: "Multi-Agent Orchestration Evaluation"
+version: "1.0.0"
+governance: "DGAF / Agent Amethyst"
+pattern_class: "Orchestration"
+ndp_pattern: "Multi-Agent Conductor"
+prompt_file: "03_multi_agent_flow.md"
+metrics:
+  - name: "critic_rubric_use"
+    type: "boolean"
+    description: "Did the Critic actually apply the rubric rather than picking arbitrarily?"
+    weight: 0.35
+  - name: "editor_fidelity"
+    type: "boolean"
+    description: "Did the Editor faithfully follow the Critic recommendation and warnings?"
+    weight: 0.35
+  - name: "goal_alignment"
+    type: "boolean"
+    description: "Does the final answer reflect the user original goal?"
+    weight: 0.30
+rules:
+  - if: "critic_rubric_use == false"
+    then: "pass = false"
+  - if: "editor_fidelity == false"
+    then: "pass = false"
+passing_threshold: 0.75

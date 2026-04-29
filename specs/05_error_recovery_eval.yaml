@@ -1,0 +1,31 @@
+# specs/05_error_recovery_eval.yaml
+# Governance: Agent Amethyst / DGAF ecosystem
+name: "Error Recovery & Robustness Evaluation"
+version: "1.0.0"
+governance: "DGAF / Agent Amethyst"
+pattern_class: "Resilience"
+ndp_pattern: "Recovery Robustness"
+prompt_file: "05_error_recovery.md"
+metrics:
+  - name: "self_awareness"
+    type: "boolean"
+    description: "Did the model correctly identify its own mistake or vagueness?"
+    weight: 0.30
+  - name: "correction_clarity"
+    type: "score"
+    min: 0
+    max: 5
+    description: "Is the corrected answer clearly better and more direct?"
+    weight: 0.30
+  - name: "user_alignment"
+    type: "boolean"
+    description: "Did it re-state the user goal accurately before correcting?"
+    weight: 0.25
+  - name: "politeness"
+    type: "boolean"
+    description: "Acknowledged error without over-apologizing?"
+    weight: 0.15
+rules:
+  - if: "self_awareness == false"
+    then: "pass = false"
+passing_threshold: 0.75

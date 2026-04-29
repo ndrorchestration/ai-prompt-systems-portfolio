@@ -1,0 +1,47 @@
+# specs/example.yaml — Reference evaluation spec template
+# Governance: Agent Amethyst / DGAF ecosystem
+# See: https://github.com/Flickerflash/DGAF-Framework
+
+name: "State Anchor Evaluation"
+version: "1.0.0"
+governance: "DGAF / Agent Amethyst"
+pattern_class: "State Management"
+ndp_pattern: "State Anchor"
+prompt_file: "01_state_anchor.md"
+
+metrics:
+  - name: "role_consistency"
+    type: "boolean"
+    description: "Did the assistant stay in role throughout the conversation?"
+    weight: 0.30
+  - name: "scope_adherence"
+    type: "boolean"
+    description: "Did the assistant respect defined boundaries and constraints?"
+    weight: 0.25
+  - name: "goal_tracking"
+    type: "boolean"
+    description: "Did the assistant restate and follow the user goal?"
+    weight: 0.20
+  - name: "clarification_quality"
+    type: "boolean"
+    description: "Did the assistant ask for clarification when the request was ambiguous?"
+    weight: 0.10
+  - name: "drift_handling"
+    type: "boolean"
+    description: "Did the assistant detect and address topic drift?"
+    weight: 0.10
+  - name: "helpfulness"
+    type: "score"
+    min: 0
+    max: 5
+    description: "Overall helpfulness of the response (0=unhelpful, 5=exemplary)"
+    weight: 0.05
+
+rules:
+  - if: "role_consistency == false"
+    then: "pass = false"
+  - if: "scope_adherence == false"
+    then: "pass = false"
+
+passing_threshold: 0.75
+notes: "This is the reference template. Copy and adapt for each prompt artifact."
