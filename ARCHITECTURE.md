@@ -2,14 +2,14 @@
 
 **Governed by:** [DGAF-Framework](https://github.com/Flickerflash/DGAF-Framework)
 **Evidence steward:** Agent Apogee
-**Last updated:** 2026-04-29
+**Last updated:** 2026-04-29 (BLG-08 rename — raw prompts moved to `prompts/`)
 
 ---
 
 ## Purpose
 
 A modular library of prompt engineering patterns for multi-agent and governed AI systems.
-Each module is a standalone, reusable pattern with a spec (`.md`), raw prompt, and usage example.
+Each module has a numbered spec (`.md`) and a raw prompt artifact in `prompts/`.
 
 ---
 
@@ -17,13 +17,21 @@ Each module is a standalone, reusable pattern with a spec (`.md`), raw prompt, a
 
 ```
 ai-prompt-systems-portfolio/
-├── 01_state_anchor.md            ← State persistence across agent turns
-├── 02_constraint_gate.md         ← Hard constraint enforcement at inference
-├── 03_multi_agent_flow.md        ← Orchestration handoff patterns
-├── 04_parametric_constraint.md   ← Dynamic constraint injection
-├── 05_error_recovery.md          ← Graceful failure + retry logic
-├── specs/                        ← Formal JSON/YAML specs per pattern
-└── [raw prompt files]            ← Copy-paste ready prompt artifacts
+├── 01_state_anchor.md              ← Spec: State persistence across agent turns
+├── 02_constraint_gate.md           ← Spec: Hard constraint enforcement at inference
+├── 03_multi_agent_flow.md          ← Spec: Orchestration handoff patterns
+├── 04_parametric_constraint.md     ← Spec: Dynamic constraint injection
+├── 05_error_recovery.md            ← Spec: Graceful failure + retry logic
+├── prompts/
+│   ├── stateanchorprompt.md          ← Raw prompt artifact for 01
+│   ├── constraintgateguardrail.md    ← Raw prompt artifact for 02
+│   ├── multi-agent-orchestration-pattern.md  ← Raw prompt artifact for 03
+│   ├── parametricexample.md          ← Raw prompt artifact for 04
+│   └── recoveryrobustness.md         ← Raw prompt artifact for 05
+├── specs/                          ← Formal JSON/YAML specs per pattern
+├── ARCHITECTURE.md                 ← This file
+├── NOTICE                          ← Apache 2.0 + DGAF attribution
+└── LICENSE
 ```
 
 ---
