@@ -1,6 +1,8 @@
-> **Governance:** DGAF / Agent Amethyst — Yes. This portfolio is curated under DGAF evaluation standards. IP-safe samples only; governed prompts reference [DGAF-Framework](https://github.com/Flickerflash/DGAF-Framework).
+> **Governance:** DGAF / Agent Amethyst — Curated under DGAF evaluation standards. IP-safe samples only. Governed by [DGAF-Framework](https://github.com/ndrorchestration/DGAF-Framework).
 
 > **Status: Stable — actively maintained.** Commit gaps reflect curation cadence, not abandonment. New samples added when eval-validated.
+
+> **Lineage:** This is the **public-facing IP-safe portfolio** — a curated selection of prompt patterns safe for public display. It is distinct from the private `ai-prompt-engineering-portfolio` (full benchmark + Gold Star certification archive) and `AI-Prompt-Engineer` (historical archive with benchmark lineage). See [Prompt-Engineering Repo Map](#prompt-engineering-repo-map) below.
 
 ## Quick Overview (In Plain Language)
 
@@ -20,6 +22,18 @@ If you're a recruiter or engineer:
 - Start by skimming one or two prompts in the `systems/` or `examples/` folders.
 - Look for my comments and evaluation notes to see how I debug and improve prompts.
 - Use this repo together with **junior-apogee-app** to see how prompts flow into evaluation.
+
+---
+
+## Prompt-Engineering Repo Map
+
+| Repo | Visibility | Purpose | Status |
+|------|-----------|---------|--------|
+| **`ai-prompt-systems-portfolio`** (this repo) | Public | IP-safe curated samples — recruiter/engineer entry point | Active |
+| `ai-prompt-engineering-portfolio` | Private | Full benchmark archive, Gold Star certification records, DGAF-governed master set | Active |
+| `AI-Prompt-Engineer` | Private | Historical benchmark lineage — origin archive, pre-DGAF era | Archive/Reference |
+
+---
 
 # AI Prompt Systems Portfolio (IP‑Safe Samples)
 
@@ -91,7 +105,6 @@ Each file follows the same format:
 - 1 minute: Open `01_state_anchor.md` and skim the goal, example, and notes.
 - 1 minute: Open any other file (e.g., `03_multi_agent_flow.md`) to see how I think about multi‑agent prompts and evaluation.
 
-
 ## Taxonomy: Patterns & Workflows
 
 This portfolio organizes prompts into four semantic categories:
@@ -148,6 +161,8 @@ See `specs/example.yaml` for a complete example.
 
 ## Related Projects
 
-- [DGAF-Framework](https://github.com/Flickerflash/DGAF-Framework) — governance spine
-- [junior-apogee-app](https://github.com/Flickerflash/junior-apogee-app) — primary agent evaluation platform
-- [resumeapex-eval](https://github.com/Flickerflash/resumeapex-eval) — flagship benchmark
+- [DGAF-Framework](https://github.com/ndrorchestration/DGAF-Framework) — governance spine
+- [junior-apogee-app](https://github.com/ndrorchestration/junior-apogee-app) — primary agent evaluation platform
+- [resumeapex-eval](https://github.com/ndrorchestration/resumeapex-eval) — flagship benchmark
+- [Gold-star-standards](https://github.com/ndrorchestration/Gold-star-standards) — certification rubrics (private)
+- [sentinel-governance](https://github.com/ndrorchestration/sentinel-governance) — CI/CD governance enforcement
