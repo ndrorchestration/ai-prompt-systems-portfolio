@@ -1,8 +1,8 @@
 <!--
-  Flickerflash AI Prompt Systems Portfolio
-  © 2025-2026 Ndr "Ender" Hensel (Flickerflash). Apache License 2.0.
+  ndrorchestration AI Prompt Systems Portfolio
+  © 2025-2026 Njineer (ndrorchestration). Apache License 2.0.
   Governance: Agent Amethyst / DGAF ecosystem
-  See: https://github.com/Flickerflash/DGAF-Framework
+  See: https://github.com/ndrorchestration/DGAF-Framework
   Pattern Class: Safety & Compliance · NDR Pattern: Constraint Gate
   Canonical filename: 02_constraint_gate.md
   Legacy alias: constraintgateguardrail (retained for back-compat)

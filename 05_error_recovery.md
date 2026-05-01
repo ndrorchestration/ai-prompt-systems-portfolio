@@ -1,8 +1,8 @@
 <!--
-  Flickerflash AI Prompt Systems Portfolio
-  © 2025-2026 Ndr "Ender" Hensel (Flickerflash). Apache License 2.0.
+  ndrorchestration AI Prompt Systems Portfolio
+  © 2025-2026 Njineer (ndrorchestration). Apache License 2.0.
   Governance: Agent Amethyst / DGAF ecosystem
-  See: https://github.com/Flickerflash/DGAF-Framework
+  See: https://github.com/ndrorchestration/DGAF-Framework
   Pattern Class: Resilience · NDR Pattern: Recovery Robustness
   Canonical filename: 05_error_recovery.md
   Legacy alias: recoveryrobustness (retained for back-compat)

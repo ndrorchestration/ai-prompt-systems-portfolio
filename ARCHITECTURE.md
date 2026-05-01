@@ -2,7 +2,7 @@
 
 **Governed by:** [DGAF-Framework](https://github.com/ndrorchestration/DGAF-Framework)
 **Evidence steward:** Agent Apogee
-**Last updated:** 2026-04-29 (BLG-08 rename — raw prompts moved to `prompts/`)
+**Last updated:** 2026-05-01 (GAP-03 — Flickerflash namespace purge from pattern headers; repo count corrected)
 
 ---
 
@@ -71,4 +71,4 @@ DGAF-Framework (spine)
 ```
 
 See [CROSS_REF.md](https://github.com/ndrorchestration/DGAF-Framework/blob/main/CROSS_REF.md)
-for the full 13-repo ecosystem map.
+for the full 21-repo ecosystem map.
