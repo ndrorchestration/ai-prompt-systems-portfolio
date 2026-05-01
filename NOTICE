@@ -1,5 +1,5 @@
-Flickerflash AI Prompt Systems Portfolio
-Copyright 2025-2026 Ndr "Ender" Hensel (Flickerflash)
+ndrorchestration AI Prompt Systems Portfolio
+Copyright 2025-2026 Njineer (ndrorchestration)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,13 +15,13 @@ limitations under the License.
 
 ---
 
-This repository contains IP-safe public samples from the Flickerflash
+This repository contains IP-safe public samples from the ndrorchestration
 AI prompt engineering portfolio. All prompt architectures, evaluation
-rubrics, and governance patterns are original work by Njineer/Flickerflash.
+rubrics, and governance patterns are original work by Njineer (ndrorchestration).
 
 Governance Authority: Agent Amethyst (DGAF ecosystem)
 Certification Standard: Gold Star Standards v1 (Platinum Star, Dec 2025)
-Ecosystem Spine: https://github.com/Flickerflash/DGAF-Framework
+Ecosystem Spine: https://github.com/ndrorchestration/DGAF-Framework
 
 Private frameworks (frequency-aware constraints, full multi-agent
 orchestration specs, phi-calculus systems) are maintained separately
