@@ -1,6 +1,6 @@
 # ai-prompt-systems-portfolio — Architecture
 
-**Governed by:** [DGAF-Framework](https://github.com/Flickerflash/DGAF-Framework)
+**Governed by:** [DGAF-Framework](https://github.com/ndrorchestration/DGAF-Framework)
 **Evidence steward:** Agent Apogee
 **Last updated:** 2026-04-29 (BLG-08 rename — raw prompts moved to `prompts/`)
 
@@ -70,5 +70,5 @@ DGAF-Framework (spine)
   └── ai-prompt-engineering-portfolio  ← Applied portfolio examples
 ```
 
-See [CROSS_REF.md](https://github.com/Flickerflash/DGAF-Framework/blob/main/CROSS_REF.md)
+See [CROSS_REF.md](https://github.com/ndrorchestration/DGAF-Framework/blob/main/CROSS_REF.md)
 for the full 13-repo ecosystem map.

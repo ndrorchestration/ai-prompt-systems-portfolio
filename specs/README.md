@@ -1,7 +1,7 @@
 # specs/ — Machine-Readable Evaluation Specifications
 
 > **Governance:** Agent Amethyst / DGAF ecosystem  
-> See: https://github.com/Flickerflash/DGAF-Framework
+> See: https://github.com/ndrorchestration/DGAF-Framework
 
 This directory contains YAML evaluation specs for each prompt artifact in this portfolio.
 Each spec defines metrics, scoring rules, and pass/fail logic for programmatic assessment.
