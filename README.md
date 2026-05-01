@@ -1,5 +1,6 @@
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square)
 ![License](https://img.shields.io/badge/License-Apache%202.0-01696f?style=flat-square)
+![Language](https://img.shields.io/badge/Language-Python-blue?style=flat-square)
 ![Governed](https://img.shields.io/badge/Governed%20by-DGAF--Framework-7a39bb?style=flat-square)
 ![IP Safe](https://img.shields.io/badge/IP--Safe%20Samples-public-4f98a3?style=flat-square)
 ![Maintained](https://img.shields.io/badge/Maintained-yes-437a22?style=flat-square)
@@ -69,7 +70,7 @@ Each file follows the same format:
 
 **File:** `01_state_anchor.md`
 
-**Goal:** Keep an assistant consistently “on persona” and in scope across a long conversation.
+**Goal:** Keep an assistant consistently "on persona" and in scope across a long conversation.
 - Shows how I define role, boundaries, and what to ignore.
 - Includes a short checklist I use to check if the assistant stayed anchored.
 
@@ -85,16 +86,16 @@ Each file follows the same format:
 
 **File:** `03_multi_agent_flow.md`
 
-**Goal:** Show how multiple AI “roles” can cooperate (e.g., Researcher → Critic → Editor).
+**Goal:** Show how multiple AI "roles" can cooperate (e.g., Researcher → Critic → Editor).
 - High‑level description of the roles and their responsibilities.
-- Example of a review loop where one agent checks another against a rubric.
+- Example of a review loop where one agent checks another against a radix.
 
-## 4. Parametric (“Dial”) Constraint Example
+## 4. Parametric ("Dial") Constraint Example
 
 **File:** `04_parametric_constraint.md`
 
-**Goal:** Demonstrate that I can tune behavior along a “dial” (e.g., strictness), **without** exposing proprietary math or full methodology.
-- Describes a parameter like “strictness” and how it changes outputs.
+**Goal:** Demonstrate that I can tune behavior along a "dial" (e.g., strictness), **without** exposing proprietary math or full methodology.
+- Describes a parameter like "strictness" and how it changes outputs.
 - Shows how I would document and test different parameter settings.
 
 ## 5. Error Recovery & Robustness Prompt
@@ -103,7 +104,7 @@ Each file follows the same format:
 
 **Goal:** Handle failures gracefully (bad tools, missing data, unclear instructions) instead of crashing or hallucinating.
 - Outlines how the assistant should admit uncertainty and ask for clarification.
-- Includes examples of “good” vs “bad” recovery behavior.
+- Includes examples of "good" vs "bad" recovery behavior.
 
 ## How to Review This Repo in 3 Minutes
 
