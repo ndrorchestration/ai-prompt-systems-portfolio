@@ -1,3 +1,9 @@
+![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square)
+![License](https://img.shields.io/badge/License-Apache%202.0-01696f?style=flat-square)
+![Governed](https://img.shields.io/badge/Governed%20by-DGAF--Framework-7a39bb?style=flat-square)
+![IP Safe](https://img.shields.io/badge/IP--Safe%20Samples-public-4f98a3?style=flat-square)
+![Maintained](https://img.shields.io/badge/Maintained-yes-437a22?style=flat-square)
+
 > **Governance:** DGAF / Agent Amethyst — Curated under DGAF evaluation standards. IP-safe samples only. Governed by [DGAF-Framework](https://github.com/ndrorchestration/DGAF-Framework).
 
 > **Status: Stable — actively maintained.** Commit gaps reflect curation cadence, not abandonment. New samples added when eval-validated.
