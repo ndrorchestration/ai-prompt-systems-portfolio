@@ -1,9 +1,9 @@
 # Ecosystem State — ndrorchestration
 
-**Last synchronized:** 2026-08-15
+**Last synchronized:** 2026-09-12
 **Governing framework:** [DGAF-Framework](https://github.com/ndrorchestration/DGAF-Framework) (current governance spine)
-**Meta-orchestrator:** Agent Amethyst
-**Institutional anchor:** COLLEEN
+**Governance compatibility role:** `role.governance-orchestrator` — alignment only; no DGAF authority transfer
+**Continuity capability alignment:** `cap.continuity.coordinate` — alignment only; no institutional or governance authority implied
 
 ---
 
@@ -37,6 +37,8 @@ Use the evidence ladder:
 A project-local benchmark or governance tier is not an external certification. External framework references are mappings/comparisons unless independently validated by the relevant authority.
 
 Cross-repository references do not constitute mutual validation.
+
+For current persona-to-role compatibility semantics, see `governance/persona_role_compatibility.v1.json`. Historical actor and review identity remains event-time provenance and is not rewritten by the current role projection.
 
 For the authoritative governance spine, see [ndrorchestration/DGAF-Framework](https://github.com/ndrorchestration/DGAF-Framework).
 
