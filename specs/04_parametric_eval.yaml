@@ -1,8 +1,8 @@
 # specs/04_parametric_eval.yaml
-# Governance: Agent Amethyst / DGAF ecosystem
+# Governance alignment: role.governance-orchestrator (DGAF compatibility; no authority transfer)
 name: "Parametric Dial Constraint Evaluation"
 version: "1.0.0"
-governance: "DGAF / Agent Amethyst"
+governance: "role.governance-orchestrator"
 pattern_class: "Parameterization"
 ndp_pattern: "Dial Constraint"
 prompt_file: "04_parametric_constraint.md"
