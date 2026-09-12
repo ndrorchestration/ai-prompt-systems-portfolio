@@ -42,3 +42,56 @@ jobs:
           grep -Fq 'cross-repository references do not transfer validation' README.md
           grep -Fq 'not an executable evaluation harness' specs/README.md
           grep -Fq 'Cross-repository references do not transfer validation' specs/README.md
+      - name: Verify persona-to-role compatibility boundary
+        run: |
+          set -euo pipefail
+
+          test -s governance/persona_role_compatibility.v1.json
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("governance/persona_role_compatibility.v1.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+
+          assert data["schema_version"] == 1
+          assert data["source_registry"]["repository"] == "ndrorchestration/DGAF-Framework"
+          assert data["source_registry"]["commit"] == "8bc9f518ba1d8d939cd75d3f5b97d65289c5a0d8"
+          assert data["authority_transfer"] is False
+          assert data["historical_provenance_immutable"] is True
+
+          by_surface = {entry["surface"]: entry for entry in data["mappings"]}
+          assert by_surface["repository_governance"]["role_id"] == "role.governance-orchestrator"
+          assert by_surface["evidence_stewardship"]["role_id"] == "role.evidence-verification-reviewer"
+          assert by_surface["module.02.constraint_gate"]["role_id"] == "role.constraint-qa-auditor"
+          assert by_surface["module.04.parametric_constraint"]["classification"] == "UN"
+          assert by_surface["module.04.parametric_constraint"]["role_id"] is None
+          assert by_surface["module.05.error_recovery"]["classification"] == "UN"
+          assert by_surface["module.05.error_recovery"]["role_id"] is None
+          PY
+
+          bad=0
+          for file in \
+            ARCHITECTURE.md NOTICE ECOSYSTEM_STATE.md \
+            01_state_anchor.md 02_constraint_gate.md 03_multi_agent_flow.md \
+            04_parametric_constraint.md 05_error_recovery.md \
+            prompts/stateanchorprompt.md prompts/constraintgateguardrail.md \
+            prompts/multi-agent-orchestration-pattern.md prompts/parametricexample.md \
+            prompts/recoveryrobustness.md \
+            specs/01_state_anchor_eval.yaml specs/02_constraint_gate_eval.yaml \
+            specs/03_multi_agent_eval.yaml specs/04_parametric_eval.yaml \
+            specs/05_error_recovery_eval.yaml; do
+            if grep -nE 'Governance: Agent Amethyst / DGAF ecosystem|Governance Authority: Agent Amethyst|Evidence steward: Agent Apogee|Meta-orchestrator: Agent Amethyst|Institutional anchor: COLLEEN|governance: "DGAF / Agent Amethyst"' "$file"; then
+              bad=1
+            fi
+          done
+          if [ "$bad" -ne 0 ]; then
+            echo "Current-facing persona authority remains on migrated surfaces."
+            exit 1
+          fi
+
+          grep -Fq 'role.governance-orchestrator' ARCHITECTURE.md
+          grep -Fq 'role.evidence-verification-reviewer' ARCHITECTURE.md
+          grep -Fq 'role.constraint-qa-auditor' ARCHITECTURE.md
+          grep -Fq 'UNRESOLVED / NO CANONICAL ROLE' ARCHITECTURE.md

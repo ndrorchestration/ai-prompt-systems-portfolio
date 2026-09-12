@@ -19,8 +19,8 @@ This repository contains IP-safe public samples from the ndrorchestration
 AI prompt engineering portfolio. All prompt architectures, evaluation
 rubrics, and governance patterns are original work by Njineer (ndrorchestration).
 
-Governance Authority: Agent Amethyst (DGAF ecosystem)
-Certification Standard: Gold Star Standards v1 (Platinum Star, Dec 2025)
+Governance alignment: role.governance-orchestrator (DGAF compatibility reference; no authority transfer)
+Evaluation lineage: Gold Star Standards v1 / Platinum Star (Dec 2025) — project-local historical label; not external certification
 Ecosystem Spine: https://github.com/ndrorchestration/DGAF-Framework
 
 Private frameworks (frequency-aware constraints, full multi-agent

@@ -1,7 +1,7 @@
 <!--
   Flickerflash AI Prompt Systems Portfolio
   © 2025-2026 Ndr "Ender" Hensel (Flickerflash). Apache License 2.0.
-  Governance: Agent Amethyst / DGAF ecosystem
+  Governance alignment: role.governance-orchestrator (DGAF compatibility; no authority transfer)
   See: https://github.com/Flickerflash/DGAF-Framework
   Pattern Class: Safety & Compliance · NDR Pattern: Constraint Gate
   Renamed: constraintgateguardrail → prompts/constraintgateguardrail.md (BLG-08, 2026-04-29)

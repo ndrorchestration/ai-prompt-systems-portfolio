@@ -1,7 +1,7 @@
 <!--
   ndrorchestration AI Prompt Systems Portfolio
   © 2025-2026 Njineer (ndrorchestration). Apache License 2.0.
-  Governance: Agent Amethyst / DGAF ecosystem
+  Governance alignment: role.governance-orchestrator (DGAF compatibility; no authority transfer)
   See: https://github.com/ndrorchestration/DGAF-Framework
   Pattern Class: Parameterization · NDR Pattern: Dial Constraint
   Canonical filename: 04_parametric_constraint.md

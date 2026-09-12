@@ -1,8 +1,8 @@
 # specs/03_multi_agent_eval.yaml
-# Governance: Agent Amethyst / DGAF ecosystem
+# Governance alignment: role.governance-orchestrator (DGAF compatibility; no authority transfer)
 name: "Multi-Agent Orchestration Evaluation"
 version: "1.0.0"
-governance: "DGAF / Agent Amethyst"
+governance: "role.governance-orchestrator"
 pattern_class: "Orchestration"
 ndp_pattern: "Multi-Agent Conductor"
 prompt_file: "03_multi_agent_flow.md"

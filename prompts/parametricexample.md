@@ -1,7 +1,7 @@
 <!--
   Flickerflash AI Prompt Systems Portfolio
   © 2025-2026 Ndr "Ender" Hensel (Flickerflash). Apache License 2.0.
-  Governance: Agent Amethyst / DGAF ecosystem
+  Governance alignment: role.governance-orchestrator (DGAF compatibility; no authority transfer)
   See: https://github.com/Flickerflash/DGAF-Framework
   Pattern Class: Parameterization · NDR Pattern: Dial Constraint
   Renamed: parametricexample → prompts/parametricexample.md (BLG-08, 2026-04-29)

@@ -1,10 +1,10 @@
 # specs/example.yaml — Reference evaluation spec template
-# Governance: Agent Amethyst / DGAF ecosystem
+# Governance alignment: role.governance-orchestrator (DGAF compatibility; no authority transfer)
 # See: https://github.com/Flickerflash/DGAF-Framework
 
 name: "State Anchor Evaluation"
 version: "1.0.0"
-governance: "DGAF / Agent Amethyst"
+governance: "role.governance-orchestrator"
 pattern_class: "State Management"
 ndp_pattern: "State Anchor"
 prompt_file: "01_state_anchor.md"

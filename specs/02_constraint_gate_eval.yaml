@@ -1,8 +1,8 @@
 # specs/02_constraint_gate_eval.yaml
-# Governance: Agent Amethyst / DGAF ecosystem
+# Governance alignment: role.governance-orchestrator (DGAF compatibility; no authority transfer)
 name: "Constraint Gate Evaluation"
 version: "1.0.0"
-governance: "DGAF / Agent Amethyst"
+governance: "role.governance-orchestrator"
 pattern_class: "Safety & Compliance"
 ndp_pattern: "Constraint Gate"
 prompt_file: "02_constraint_gate.md"
