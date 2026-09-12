@@ -1,8 +1,9 @@
 # ai-prompt-systems-portfolio — Architecture
 
 **Governed by:** [DGAF-Framework](https://github.com/ndrorchestration/DGAF-Framework)
-**Evidence steward:** Agent Apogee
-**Last updated:** 2026-05-01 (GAP-03 — Flickerflash namespace purge from pattern headers; repo count corrected)
+**Governance compatibility role:** `role.governance-orchestrator` — alignment only; no DGAF authority transfer
+**Evidence stewardship alignment:** `role.evidence-verification-reviewer` — alignment only; no DGAF authority transfer
+**Last updated:** 2026-09-12 (persona-to-role compatibility migration)
 
 ---
 
@@ -38,26 +39,30 @@ ai-prompt-systems-portfolio/
 
 ## Pattern Taxonomy
 
-| Module | Pattern Type | DGAF Alignment |
-|--------|-------------|---------------|
-| 01 State Anchor | Continuity | COLLEEN / P-02 COLLEEN-Trigger-Chain |
-| 02 Constraint Gate | Guardrail | Sentinel / NDR-01 |
-| 03 Multi-Agent Flow | Orchestration | Amethyst-Conductor / P-01 Roster-Sync |
-| 04 Parametric Constraint | Adaptive Control | Apogee / P-04 NOTICE-Authority-Chain |
-| 05 Error Recovery | Resilience | Reciprocity / P-05 False-Positive-Close |
+The DGAF references below are behavior-derived compatibility alignments, not transferred DGAF authority. Historical names are retained separately in provenance where required.
+
+| Module | Pattern Type | Functional alignment |
+|--------|-------------|----------------------|
+| 01 State Anchor | Continuity | `cap.continuity.coordinate` — conversational continuity only |
+| 02 Constraint Gate | Guardrail | `role.constraint-qa-auditor` / NDR-01 — constraint verification; not security-containment authority |
+| 03 Multi-Agent Flow | Orchestration | `role.governance-orchestrator` / P-01 Roster-Sync — orchestration analogue only |
+| 04 Parametric Constraint | Adaptive Control | **UNRESOLVED / NO CANONICAL ROLE** — parameterized prompt behavior only |
+| 05 Error Recovery | Resilience | **UNRESOLVED / NO CANONICAL ROLE** — conversational self-correction only |
+
+The repository-local compatibility record is `governance/persona_role_compatibility.v1.json`, bound to DGAF registry commit `8bc9f518ba1d8d939cd75d3f5b97d65289c5a0d8`.
 
 ---
 
 ## DGAF Governance Notice
 
 This repository is a **prompt pattern library** within the DGAF (Dynamic Governance Agentic
-Formation Framework) ecosystem. All patterns are validated against:
+Formation Framework) ecosystem. The portfolio documents mappings or compatibility relationships to:
 
 - NIST AI RMF Govern 1.1, Map 1.5
 - DGAF AXIS constraints (NDR-01 / IONIAN mode)
-- Agent Apogee evidence traceability requirements
+- `role.evidence-verification-reviewer` evidence-integrity semantics
 
-Pattern updates must pass the Constraint Gate (Module 02) before merge.
+These references do not establish external certification, DGAF authorization, or independent validation. Pattern updates remain subject to repository review and the Constraint Gate (Module 02) where that review process is applied.
 
 ---
 
@@ -71,4 +76,4 @@ DGAF-Framework (spine)
 ```
 
 See [CROSS_REF.md](https://github.com/ndrorchestration/DGAF-Framework/blob/main/CROSS_REF.md)
-for the full 21-repo ecosystem map.
+for the ecosystem map.
