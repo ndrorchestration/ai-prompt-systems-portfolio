@@ -118,3 +118,14 @@ jobs:
           grep -Fq 'role.evidence-verification-reviewer' "$file"
           grep -Fq 'role.constraint-qa-auditor' "$file"
           grep -Fq 'Historical authorship/session attribution' "$file"
+      - name: Verify P-34b cross-listing is locally non-authoritative
+        run: |
+          set -euo pipefail
+          file=patterns/P-34b_GPT54_THINKING_PROMPTS_XREF.md
+          grep -Fq 'Current functional interpretation' "$file"
+          grep -Fq 'role.governance-orchestrator' "$file"
+          grep -Fq 'role.evidence-verification-reviewer' "$file"
+          grep -Fq 'role.constraint-qa-auditor' "$file"
+          grep -Fq 'Historical cross-listing snapshot' "$file"
+          grep -Fq 'does not modify the primary DGAF pattern' "$file"
+          grep -Fq 'does not transfer DGAF authority' "$file"
