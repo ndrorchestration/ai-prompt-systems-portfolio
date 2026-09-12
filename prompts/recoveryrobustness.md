@@ -1,7 +1,7 @@
 <!--
   Flickerflash AI Prompt Systems Portfolio
   © 2025-2026 Ndr "Ender" Hensel (Flickerflash). Apache License 2.0.
-  Governance: Agent Amethyst / DGAF ecosystem
+  Governance alignment: role.governance-orchestrator (DGAF compatibility; no authority transfer)
   See: https://github.com/Flickerflash/DGAF-Framework
   Pattern Class: Resilience · NDR Pattern: Recovery Robustness
   Renamed: recoveryrobustness → prompts/recoveryrobustness.md (BLG-08, 2026-04-29)
@@ -31,7 +31,7 @@ Show how I handle errors, bad outputs, or broken conversations.
 - **Self‑awareness:** Did the model correctly identify its own mistake or vagueness?  
 - **Clarity of correction:** Is the new answer clearly better and more direct?  
 - **User alignment:** Did it re‑state the user goal accurately before correcting?  
-- **Politeness:** Acknowledged the error without over‑apologizing.
+- **Politeness:** Acknowledged error without over‑apologizing.
 
 ## Notes
 
