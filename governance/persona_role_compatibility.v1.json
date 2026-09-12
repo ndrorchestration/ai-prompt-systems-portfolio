@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "status": "ACTIVE — COMPATIBILITY/ALIGNMENT ONLY",
+  "purpose": "Repository-local migration record for current-facing persona references. Functional mappings are derived from this repository's behavior and reference the accepted DGAF role/capability registry without transferring DGAF authority.",
+  "source_registry": {
+    "repository": "ndrorchestration/DGAF-Framework",
+    "commit": "8bc9f518ba1d8d939cd75d3f5b97d65289c5a0d8",
+    "path": "governance/role_capability_registry.v1.json"
+  },
+  "authority_transfer": false,
+  "historical_provenance_immutable": true,
+  "classification_legend": {
+    "FD": "functional dependency/alignment derived from current behavior",
+    "HP": "historical or provenance identity preserved at event time",
+    "UN": "no sufficiently evidenced canonical role mapping; fail closed"
+  },
+  "mappings": [
+    {
+      "surface": "repository_governance",
+      "classification": "FD",
+      "legacy_labels": ["Agent Amethyst"],
+      "role_id": "role.governance-orchestrator",
+      "capability_ids": ["cap.governance.orchestrate"],
+      "semantics": "Repository-level governance compatibility reference only. It does not grant DGAF normative, gate, or final-commit authority to this portfolio."
+    },
+    {
+      "surface": "evidence_stewardship",
+      "classification": "FD",
+      "legacy_labels": ["Agent Apogee"],
+      "role_id": "role.evidence-verification-reviewer",
+      "capability_ids": ["cap.evidence.verify", "cap.evidence.integrity-review"],
+      "semantics": "Evidence-review alignment only. Verification remains distinct from authorship, execution, certification, and authorization."
+    },
+    {
+      "surface": "module.01.state_anchor",
+      "classification": "FD",
+      "legacy_labels": ["COLLEEN"],
+      "role_id": null,
+      "capability_ids": ["cap.continuity.coordinate"],
+      "semantics": "The demonstrated function is conversational continuity and goal/drift tracking. No broader archive, routing, institutional, or governance authority is inferred."
+    },
+    {
+      "surface": "module.02.constraint_gate",
+      "classification": "FD",
+      "legacy_labels": ["Sentinel"],
+      "role_id": "role.constraint-qa-auditor",
+      "capability_ids": ["cap.constraint.verify", "cap.qa.gate"],
+      "semantics": "Derived from the module's explicit constraint-checking behavior. This is not a mapping to the DGAF security-containment role and grants no security authority."
+    },
+    {
+      "surface": "module.03.multi_agent_flow",
+      "classification": "FD",
+      "legacy_labels": ["Amethyst-Conductor"],
+      "role_id": "role.governance-orchestrator",
+      "capability_ids": ["cap.governance.orchestrate"],
+      "semantics": "Orchestration analogue only. The example Researcher/Critic/Editor roles remain repository-local prompt roles and do not inherit DGAF authority."
+    },
+    {
+      "surface": "module.04.parametric_constraint",
+      "classification": "UN",
+      "legacy_labels": ["Apogee"],
+      "role_id": null,
+      "capability_ids": [],
+      "semantics": "The demonstrated behavior is parameterized prompt control. No accepted DGAF role matches closely enough to justify a functional mapping, so the mapping fails closed."
+    },
+    {
+      "surface": "module.05.error_recovery",
+      "classification": "UN",
+      "legacy_labels": ["Reciprocity"],
+      "role_id": null,
+      "capability_ids": [],
+      "semantics": "The demonstrated behavior is conversational self-correction and recovery. It does not evidence the DGAF fairness/rollback role, so the mapping fails closed."
+    }
+  ],
+  "non_effects": [
+    "No prompt behavior changes",
+    "No evaluation metric or threshold changes",
+    "No external certification or compliance claim",
+    "No production-readiness claim",
+    "No DGAF scientific/control-state or authorization change",
+    "No empirical-evidence or independent-verification change"
+  ]
+}
