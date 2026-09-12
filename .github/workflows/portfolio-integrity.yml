@@ -95,3 +95,26 @@ jobs:
           grep -Fq 'role.evidence-verification-reviewer' ARCHITECTURE.md
           grep -Fq 'role.constraint-qa-auditor' ARCHITECTURE.md
           grep -Fq 'UNRESOLVED / NO CANONICAL ROLE' ARCHITECTURE.md
+      - name: Reject named-persona authority in current best-practice instructions
+        run: |
+          set -euo pipefail
+          file=best-practices/GPT54_THINKING_BEST_PRACTICES.md
+          bad=0
+          for phrase in \
+            'Name the Full Authority Chain' \
+            'Njineer → Amethyst → Apogee Lens review required before output is marked final.' \
+            'Would DemiJoule flag any safety concern?' \
+            'Apogee Lens / DemiJoule sign-off checklist' \
+            'Always declare Njineer → Amethyst → Apogee → DemiJoule' \
+            'Output ships without Apogee review'; do
+            if grep -Fn "$phrase" "$file"; then
+              bad=1
+            fi
+          done
+          if [ "$bad" -ne 0 ]; then
+            echo "Current best-practice instructions still depend on named-persona authority/sign-off semantics."
+            exit 1
+          fi
+          grep -Fq 'role.evidence-verification-reviewer' "$file"
+          grep -Fq 'role.constraint-qa-auditor' "$file"
+          grep -Fq 'Historical authorship/session attribution' "$file"
