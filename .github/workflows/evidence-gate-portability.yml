@@ -1,0 +1,27 @@
+name: Evidence Gate portability probe
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  portability:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout consumer repository
+        uses: actions/checkout@v4
+      - name: Checkout exact Evidence Gate candidate
+        uses: actions/checkout@v4
+        with:
+          repository: ndrorchestration/DGAF-Framework
+          ref: 440f4e00234eaa387cc677582eac03b842328e97
+          path: _deps/dgaf
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run external-consumer evidence probe
+        run: python tests/evidence_gate_external_consumer.py
