@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ndrorchestration/DGAF-Framework
-          ref: 0a1bfc9fb9b02cae3351f3b22e4cb3220fc7fe11
+          ref: 8d21e3e15d6ee2df7585ccd8174f2df401290328
           path: .governed-repo-upstream
           persist-credentials: false
 
