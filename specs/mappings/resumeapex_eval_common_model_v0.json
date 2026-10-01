@@ -1,0 +1,60 @@
+{
+  "mapping_id": "CEOM-V0-RESUMEAPEX",
+  "project": "ndrorchestration/resumeapex-eval",
+  "common_model_version": "v0-candidate",
+  "authorization_effect": "NONE",
+  "evidence_transfer": false,
+  "objects": {
+    "EvaluationCase": {
+      "local_concepts": ["fixture case", "Dataset 1 case"],
+      "notes": "Public fixture cases verify evaluator machinery; private Dataset 1 cases remain a separate governed corpus."
+    },
+    "EvaluationRun": {
+      "local_concepts": ["eval.cli run"],
+      "notes": "Run records include dataset hash, evaluator version, run count, seed, bootstrap resamples, metrics, confidence intervals, and epistemic boundary."
+    },
+    "CriterionRef": {
+      "local_concepts": [
+        "Goldcanstaytoday Performance",
+        "Goldcanstaytoday Reciprocity",
+        "Goldcanstaytoday Amethyst/Apogee Meta"
+      ],
+      "notes": "These categories remain ResumeApex-local and are not standardized by the common model."
+    },
+    "EvidenceArtifact": {
+      "local_concepts": ["fixture dataset hash", "runlog", "deterministic comparison artifact"]
+    },
+    "Finding": {
+      "local_concepts": ["criterion result", "known-answer verification result", "metric result"]
+    },
+    "ClaimCeiling": {
+      "local_concepts": ["epistemic boundary"],
+      "allowed_interpretations": [
+        "known-answer evaluator behavior for the tested fixture",
+        "deterministic-repeatability result for the executed configuration"
+      ],
+      "prohibited_promotions": [
+        "real-model performance",
+        "private Dataset 1 validity",
+        "external certification",
+        "governance authority",
+        "production readiness"
+      ]
+    },
+    "ReplayBinding": {
+      "local_concepts": ["dataset hash", "evaluator version", "run count", "analysis seed", "bootstrap resample count"]
+    },
+    "ProvenanceBinding": {
+      "local_concepts": ["dataset identity", "evaluator version", "run configuration"]
+    },
+    "EvaluationDecision": {
+      "local_concepts": ["fixture verification disposition"],
+      "authorization_effect": "NONE"
+    }
+  },
+  "non_common_concepts": [
+    "Goldcanstaytoday P/R/A scoring semantics",
+    "private Dataset 1 governance",
+    "project-specific confidence interval and bootstrap implementation"
+  ]
+}

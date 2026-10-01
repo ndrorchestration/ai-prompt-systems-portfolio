@@ -1,0 +1,56 @@
+{
+  "mapping_id": "CEOM-V0-DRIFTWATCH",
+  "project": "ndrorchestration/Driftwatch",
+  "common_model_version": "v0-candidate",
+  "authorization_effect": "NONE",
+  "evidence_transfer": false,
+  "objects": {
+    "EvaluationCase": {
+      "local_concepts": ["output comparison", "agent-state observation window", "workflow-state comparison"],
+      "notes": "The common model does not prescribe the unit of drift observation."
+    },
+    "EvaluationRun": {
+      "local_concepts": ["drift detection/scoring run", "trajectory evaluation run"]
+    },
+    "CriterionRef": {
+      "local_concepts": ["drift score criterion", "trajectory criterion", "threshold check"],
+      "notes": "Thresholds and drift functionals remain project-local and are not treated as calibrated by this mapping."
+    },
+    "EvidenceArtifact": {
+      "local_concepts": ["output snapshot", "workflow-state snapshot", "drift trace", "score record"]
+    },
+    "Finding": {
+      "local_concepts": ["drift detected/not-detected result", "trajectory observation", "threshold comparison"]
+    },
+    "ClaimCeiling": {
+      "local_concepts": ["epistemic boundary"],
+      "allowed_interpretations": [
+        "implemented or computed drift/scoring result for the tested inputs",
+        "build/type-check integrity for the checks actually executed"
+      ],
+      "prohibited_promotions": [
+        "calibrated detector effectiveness",
+        "validated mathematical theorem",
+        "external certification",
+        "production security",
+        "cross-repository validation"
+      ]
+    },
+    "ReplayBinding": {
+      "local_concepts": ["input/output snapshot identities", "configuration identity", "observation window identity"]
+    },
+    "ProvenanceBinding": {
+      "local_concepts": ["source revision", "input/output provenance", "configuration identity"]
+    },
+    "EvaluationDecision": {
+      "local_concepts": ["drift evaluation/reporting disposition"],
+      "authorization_effect": "NONE"
+    }
+  },
+  "non_common_concepts": [
+    "drift functional definition",
+    "numeric threshold semantics",
+    "trajectory visualization semantics",
+    "Tarski/PHDGE/Amethyst-Lattice project vocabulary"
+  ]
+}

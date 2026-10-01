@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ndrorchestration/ai-prompt-systems-portfolio/specs/common_evaluation_object_model_v0.schema.json",
+  "title": "Common Evaluation Object Model v0",
+  "type": "object",
+  "required": [
+    "model_id",
+    "model_version",
+    "authorization_effect",
+    "evidence_transfer",
+    "objects"
+  ],
+  "properties": {
+    "model_id": {"const": "COMMON_EVALUATION_OBJECT_MODEL"},
+    "model_version": {"const": "v0-candidate"},
+    "authorization_effect": {"const": "NONE"},
+    "evidence_transfer": {"const": false},
+    "objects": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "EvaluationCase",
+          "EvaluationRun",
+          "CriterionRef",
+          "EvidenceArtifact",
+          "Finding",
+          "ClaimCeiling",
+          "ReplayBinding",
+          "ProvenanceBinding",
+          "EvaluationDecision"
+        ]
+      },
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "EvaluationCase": {
+      "type": "object",
+      "required": ["case_id", "subject_ref", "input_ref", "expected_or_reference_ref"],
+      "properties": {
+        "case_id": {"type": "string", "minLength": 1},
+        "subject_ref": {"type": "string", "minLength": 1},
+        "input_ref": {"type": "string", "minLength": 1},
+        "expected_or_reference_ref": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    },
+    "EvaluationRun": {
+      "type": "object",
+      "required": ["run_id", "case_ids", "criterion_refs", "provenance_binding_ref"],
+      "properties": {
+        "run_id": {"type": "string", "minLength": 1},
+        "case_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "criterion_refs": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "provenance_binding_ref": {"type": "string", "minLength": 1},
+        "replay_binding_ref": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    },
+    "CriterionRef": {
+      "type": "object",
+      "required": ["criterion_id", "project_local_semantics_ref"],
+      "properties": {
+        "criterion_id": {"type": "string", "minLength": 1},
+        "project_local_semantics_ref": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    },
+    "EvidenceArtifact": {
+      "type": "object",
+      "required": ["artifact_id", "artifact_type", "provenance_binding_ref"],
+      "properties": {
+        "artifact_id": {"type": "string", "minLength": 1},
+        "artifact_type": {"type": "string", "minLength": 1},
+        "provenance_binding_ref": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    },
+    "Finding": {
+      "type": "object",
+      "required": ["finding_id", "criterion_ref", "evidence_artifact_refs"],
+      "properties": {
+        "finding_id": {"type": "string", "minLength": 1},
+        "criterion_ref": {"type": "string", "minLength": 1},
+        "evidence_artifact_refs": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "ClaimCeiling": {
+      "type": "object",
+      "required": ["ceiling_id", "allowed_interpretations", "prohibited_promotions"],
+      "properties": {
+        "ceiling_id": {"type": "string", "minLength": 1},
+        "allowed_interpretations": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        },
+        "prohibited_promotions": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "ReplayBinding": {
+      "type": "object",
+      "required": ["binding_id", "replay_inputs"],
+      "properties": {
+        "binding_id": {"type": "string", "minLength": 1},
+        "replay_inputs": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "ProvenanceBinding": {
+      "type": "object",
+      "required": ["binding_id", "source_refs"],
+      "properties": {
+        "binding_id": {"type": "string", "minLength": 1},
+        "source_refs": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "EvaluationDecision": {
+      "type": "object",
+      "required": [
+        "decision_id",
+        "finding_refs",
+        "claim_ceiling_ref",
+        "authorization_effect"
+      ],
+      "properties": {
+        "decision_id": {"type": "string", "minLength": 1},
+        "finding_refs": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        },
+        "claim_ceiling_ref": {"type": "string", "minLength": 1},
+        "authorization_effect": {"const": "NONE"}
+      },
+      "additionalProperties": true
+    }
+  }
+}
