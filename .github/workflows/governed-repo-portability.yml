@@ -14,23 +14,42 @@ jobs:
   conformance:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Fetch pinned Governed Repo v0 candidate
+      - name: Checkout consumer
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Checkout exact Governed Repo P0 candidate
+        uses: actions/checkout@v4
+        with:
+          repository: ndrorchestration/DGAF-Framework
+          ref: 0a1bfc9fb9b02cae3351f3b22e4cb3220fc7fe11
+          path: .governed-repo-upstream
+          persist-credentials: false
+
+      - name: Build pinned package candidate
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p .governed-repo-upstream
-          curl --fail --location --silent --show-error \
-            "https://raw.githubusercontent.com/ndrorchestration/DGAF-Framework/911ef55e78174e1d4c95cfa7fee9ccd2ced21620/components/governed_repo.py" \
-            --output .governed-repo-upstream/governed_repo.py
-          test -s .governed-repo-upstream/governed_repo.py
-      - name: Run bounded portability cases
+          python -m pip install --upgrade build
+          python -m build .governed-repo-upstream/packages/governed-repo
+
+      - name: Install built wheel
+        shell: bash
         run: |
           set -euo pipefail
-          python governance/governed_repo_portability_probe.py \
-            .governed-repo-upstream/governed_repo.py
-      - name: Assert portability boundary
+          python -m pip install --force-reinstall             .governed-repo-upstream/packages/governed-repo/dist/*.whl
+
+      - name: Run bounded installed-package portability cases
+        shell: bash
         run: |
           set -euo pipefail
-          grep -Fq 'authority_transfer=false' <(python governance/governed_repo_portability_probe.py .governed-repo-upstream/governed_repo.py)
-          grep -Fq 'validation_transfer=false' <(python governance/governed_repo_portability_probe.py .governed-repo-upstream/governed_repo.py)
+          cd "${RUNNER_TEMP}"
+          output="$(python "${GITHUB_WORKSPACE}/governance/governed_repo_portability_probe.py")"
+          printf '%s\n' "$output"
+          grep -Fq 'package_transport=wheel' <<<"$output"
+          grep -Fq 'authority_transfer=false' <<<"$output"
+          grep -Fq 'validation_transfer=false' <<<"$output"
