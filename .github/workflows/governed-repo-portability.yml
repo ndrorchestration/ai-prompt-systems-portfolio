@@ -21,7 +21,7 @@ jobs:
           set -euo pipefail
           mkdir -p .governed-repo-upstream
           curl --fail --location --silent --show-error \
-            "https://raw.githubusercontent.com/ndrorchestration/DGAF-Framework/70c220932881be0ebe8f3743b3af65eb67836d9c/components/governed_repo.py" \
+            "https://raw.githubusercontent.com/ndrorchestration/DGAF-Framework/911ef55e78174e1d4c95cfa7fee9ccd2ced21620/components/governed_repo.py" \
             --output .governed-repo-upstream/governed_repo.py
           test -s .governed-repo-upstream/governed_repo.py
       - name: Run bounded portability cases
