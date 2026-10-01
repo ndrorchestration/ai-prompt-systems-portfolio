@@ -1,0 +1,124 @@
+name: Governed Repo P2 Action portability
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/governed-repo-action-portability.yml"
+
+permissions: {}
+
+jobs:
+  exact-sha-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Eligible case through exact remote Action SHA
+        id: eligible
+        uses: ndrorchestration/DGAF-Framework/actions/governed-repo@189379a5bca5bc12d232dd689f1bdb275ae334b6
+        with:
+          repository: ndrorchestration/ai-prompt-systems-portfolio
+          pull-request-json: '{"number":8,"base":{"sha":"portfolio-base"},"head":{"sha":"portfolio-head"}}'
+          check-runs-json: '[{"name":"portfolio-integrity","status":"completed","conclusion":"success","head_sha":"portfolio-head","completed_at":"2026-10-01T17:30:00Z"}]'
+          expected-base-sha: portfolio-base
+          expected-head-sha: portfolio-head
+          observed-at: '2026-10-01T17:31:00Z'
+          policy-json: '{"required_gates":[{"gate_id":"portfolio-integrity","gate_class":"quality","require_head_binding":true,"require_base_binding":false}]}'
+
+      - name: Assert eligible outputs and non-effects
+        shell: bash
+        env:
+          ELIGIBLE: ${{ steps.eligible.outputs.eligible }}
+          REASON: ${{ steps.eligible.outputs['reason-code'] }}
+          RECEIPT: ${{ steps.eligible.outputs['promotion-receipt'] }}
+          MERGE_EXECUTED: ${{ steps.eligible.outputs['merge-executed'] }}
+          MUTATION_EXECUTED: ${{ steps.eligible.outputs['mutation-executed'] }}
+          AUTHORIZATION_EFFECT: ${{ steps.eligible.outputs['authorization-effect'] }}
+        run: |
+          set -euo pipefail
+          test "$ELIGIBLE" = "true"
+          test "$REASON" = "ELIGIBLE_FOR_PROMOTION"
+          test "$MERGE_EXECUTED" = "false"
+          test "$MUTATION_EXECUTED" = "false"
+          test "$AUTHORIZATION_EFFECT" = "NONE"
+          RECEIPT="$RECEIPT" python - <<'PY'
+          import json
+          import os
+
+          receipt = json.loads(os.environ["RECEIPT"])
+          assert receipt["eligible"] is True
+          assert receipt["merge_executed"] is False
+          assert receipt["mutation_executed"] is False
+          assert receipt["authorization_effect"] == "NONE"
+          PY
+
+      - name: Stale-base denial through exact remote Action SHA
+        id: stale
+        uses: ndrorchestration/DGAF-Framework/actions/governed-repo@189379a5bca5bc12d232dd689f1bdb275ae334b6
+        with:
+          repository: ndrorchestration/ai-prompt-systems-portfolio
+          pull-request-json: '{"number":8,"base":{"sha":"older-base"},"head":{"sha":"portfolio-head"}}'
+          check-runs-json: '[{"name":"portfolio-integrity","status":"completed","conclusion":"success","head_sha":"portfolio-head","completed_at":"2026-10-01T17:30:00Z"}]'
+          expected-base-sha: portfolio-base
+          expected-head-sha: portfolio-head
+          observed-at: '2026-10-01T17:31:00Z'
+          policy-json: '{"required_gates":[{"gate_id":"portfolio-integrity","gate_class":"quality"}]}'
+
+      - name: Assert stale-base denial
+        shell: bash
+        env:
+          ELIGIBLE: ${{ steps.stale.outputs.eligible }}
+          REASON: ${{ steps.stale.outputs['reason-code'] }}
+        run: |
+          set -euo pipefail
+          test "$ELIGIBLE" = "false"
+          test "$REASON" = "STALE_BASE"
+
+      - name: Missing-check denial through exact remote Action SHA
+        id: missing
+        uses: ndrorchestration/DGAF-Framework/actions/governed-repo@189379a5bca5bc12d232dd689f1bdb275ae334b6
+        with:
+          repository: ndrorchestration/ai-prompt-systems-portfolio
+          pull-request-json: '{"number":8,"base":{"sha":"portfolio-base"},"head":{"sha":"portfolio-head"}}'
+          check-runs-json: '[]'
+          expected-base-sha: portfolio-base
+          expected-head-sha: portfolio-head
+          observed-at: '2026-10-01T17:31:00Z'
+          policy-json: '{"required_gates":[{"gate_id":"portfolio-integrity","gate_class":"quality"}]}'
+
+      - name: Assert missing-check denial
+        shell: bash
+        env:
+          ELIGIBLE: ${{ steps.missing.outputs.eligible }}
+          REASON: ${{ steps.missing.outputs['reason-code'] }}
+        run: |
+          set -euo pipefail
+          test "$ELIGIBLE" = "false"
+          test "$REASON" = "REQUIRED_CHECK_MISSING"
+
+      - name: Evidence denial through exact remote Action SHA
+        id: evidence
+        uses: ndrorchestration/DGAF-Framework/actions/governed-repo@189379a5bca5bc12d232dd689f1bdb275ae334b6
+        with:
+          repository: ndrorchestration/ai-prompt-systems-portfolio
+          pull-request-json: '{"number":8,"base":{"sha":"portfolio-base"},"head":{"sha":"portfolio-head"}}'
+          check-runs-json: '[{"name":"portfolio-integrity","status":"completed","conclusion":"success","head_sha":"portfolio-head","completed_at":"2026-10-01T17:30:00Z"}]'
+          expected-base-sha: portfolio-base
+          expected-head-sha: portfolio-head
+          observed-at: '2026-10-01T17:31:00Z'
+          policy-json: '{"required_gates":[{"gate_id":"portfolio-integrity","gate_class":"quality"}],"require_evidence_acceptance":true}'
+          upstream-decisions-json: '{"evidence":{"decision_class":"evidence","accepted":false,"reason_code":"DIGEST_MISMATCH","receipt_id":"consumer-evidence-1"}}'
+
+      - name: Assert evidence denial
+        shell: bash
+        env:
+          ELIGIBLE: ${{ steps.evidence.outputs.eligible }}
+          REASON: ${{ steps.evidence.outputs['reason-code'] }}
+        run: |
+          set -euo pipefail
+          test "$ELIGIBLE" = "false"
+          test "$REASON" = "EVIDENCE_INSUFFICIENT"
+
+      - name: Record bounded portability boundary
+        shell: bash
+        run: |
+          printf '%s\n'             'action_transport=exact-sha-composite'             'workflow_permissions=none'             'authority_transfer=false'             'validation_transfer=false'
