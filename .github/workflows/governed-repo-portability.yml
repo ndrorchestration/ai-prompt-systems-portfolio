@@ -1,0 +1,36 @@
+name: Governed Repo v0 portability probe
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "governance/governed_repo_portability_probe.py"
+      - ".github/workflows/governed-repo-portability.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch pinned Governed Repo v0 candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .governed-repo-upstream
+          curl --fail --location --silent --show-error \
+            "https://raw.githubusercontent.com/ndrorchestration/DGAF-Framework/70c220932881be0ebe8f3743b3af65eb67836d9c/components/governed_repo.py" \
+            --output .governed-repo-upstream/governed_repo.py
+          test -s .governed-repo-upstream/governed_repo.py
+      - name: Run bounded portability cases
+        run: |
+          set -euo pipefail
+          python governance/governed_repo_portability_probe.py \
+            .governed-repo-upstream/governed_repo.py
+      - name: Assert portability boundary
+        run: |
+          set -euo pipefail
+          grep -Fq 'authority_transfer=false' <(python governance/governed_repo_portability_probe.py .governed-repo-upstream/governed_repo.py)
+          grep -Fq 'validation_transfer=false' <(python governance/governed_repo_portability_probe.py .governed-repo-upstream/governed_repo.py)
