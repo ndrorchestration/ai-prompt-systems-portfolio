@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Eligible case through exact remote Action SHA
         id: eligible
-        uses: ndrorchestration/DGAF-Framework/actions/governed-repo@0e3d5e4c4f39061d2fbaa57e1c685cb9b61bb91d
+        uses: ndrorchestration/DGAF-Framework/actions/governed-repo@189379a5bca5bc12d232dd689f1bdb275ae334b6
         with:
           repository: ndrorchestration/ai-prompt-systems-portfolio
           pull-request-json: '{"number":8,"base":{"sha":"portfolio-base"},"head":{"sha":"portfolio-head"}}'
@@ -53,7 +53,7 @@ jobs:
 
       - name: Stale-base denial through exact remote Action SHA
         id: stale
-        uses: ndrorchestration/DGAF-Framework/actions/governed-repo@0e3d5e4c4f39061d2fbaa57e1c685cb9b61bb91d
+        uses: ndrorchestration/DGAF-Framework/actions/governed-repo@189379a5bca5bc12d232dd689f1bdb275ae334b6
         with:
           repository: ndrorchestration/ai-prompt-systems-portfolio
           pull-request-json: '{"number":8,"base":{"sha":"older-base"},"head":{"sha":"portfolio-head"}}'
@@ -75,7 +75,7 @@ jobs:
 
       - name: Missing-check denial through exact remote Action SHA
         id: missing
-        uses: ndrorchestration/DGAF-Framework/actions/governed-repo@0e3d5e4c4f39061d2fbaa57e1c685cb9b61bb91d
+        uses: ndrorchestration/DGAF-Framework/actions/governed-repo@189379a5bca5bc12d232dd689f1bdb275ae334b6
         with:
           repository: ndrorchestration/ai-prompt-systems-portfolio
           pull-request-json: '{"number":8,"base":{"sha":"portfolio-base"},"head":{"sha":"portfolio-head"}}'
@@ -97,7 +97,7 @@ jobs:
 
       - name: Evidence denial through exact remote Action SHA
         id: evidence
-        uses: ndrorchestration/DGAF-Framework/actions/governed-repo@0e3d5e4c4f39061d2fbaa57e1c685cb9b61bb91d
+        uses: ndrorchestration/DGAF-Framework/actions/governed-repo@189379a5bca5bc12d232dd689f1bdb275ae334b6
         with:
           repository: ndrorchestration/ai-prompt-systems-portfolio
           pull-request-json: '{"number":8,"base":{"sha":"portfolio-base"},"head":{"sha":"portfolio-head"}}'
