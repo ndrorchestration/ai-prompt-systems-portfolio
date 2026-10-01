@@ -1,0 +1,55 @@
+name: Governed Repo v0 portability probe
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "governance/governed_repo_portability_probe.py"
+      - ".github/workflows/governed-repo-portability.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout consumer
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Checkout exact Governed Repo P0 candidate
+        uses: actions/checkout@v4
+        with:
+          repository: ndrorchestration/DGAF-Framework
+          ref: 8d21e3e15d6ee2df7585ccd8174f2df401290328
+          path: .governed-repo-upstream
+          persist-credentials: false
+
+      - name: Build pinned package candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade build
+          python -m build .governed-repo-upstream/packages/governed-repo
+
+      - name: Install built wheel
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --force-reinstall             .governed-repo-upstream/packages/governed-repo/dist/*.whl
+
+      - name: Run bounded installed-package portability cases
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "${RUNNER_TEMP}"
+          output="$(python "${GITHUB_WORKSPACE}/governance/governed_repo_portability_probe.py")"
+          printf '%s\n' "$output"
+          grep -Fq 'package_transport=wheel' <<<"$output"
+          grep -Fq 'authority_transfer=false' <<<"$output"
+          grep -Fq 'validation_transfer=false' <<<"$output"
