@@ -21,10 +21,10 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p .assurance-profiles-upstream
-          curl -fsSL             https://raw.githubusercontent.com/ndrorchestration/DGAF-Framework/8cfea9a073476eae1f4eb964ba9b9c0df704f9b5/components/assurance_profiles.py             -o .assurance-profiles-upstream/assurance_profiles.py
+          curl -fsSL             https://raw.githubusercontent.com/ndrorchestration/DGAF-Framework/8872b16c9257159500ac68e4b87dc2dfa310fb4b/components/assurance_profiles.py             -o .assurance-profiles-upstream/assurance_profiles.py
           test -s .assurance-profiles-upstream/assurance_profiles.py
       - name: Run bounded second-system portability probe
         shell: bash
         run: |
           set -euo pipefail
-          python governance/assurance_profiles_portability_probe.py             --upstream-core .assurance-profiles-upstream/assurance_profiles.py             --mapping specs/mappings/resumeapex_eval_common_model_v0.json             --consumer-sha "${{ github.event.pull_request.head.sha || github.sha }}"             --upstream-sha 8cfea9a073476eae1f4eb964ba9b9c0df704f9b5
+          python governance/assurance_profiles_portability_probe.py             --upstream-core .assurance-profiles-upstream/assurance_profiles.py             --mapping specs/mappings/resumeapex_eval_common_model_v0.json             --consumer-sha "${{ github.event.pull_request.head.sha || github.sha }}"             --upstream-sha 8872b16c9257159500ac68e4b87dc2dfa310fb4b
