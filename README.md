@@ -83,7 +83,7 @@ Examples:
 
 - `resumeapex-eval` — separate executable evaluation/benchmark project.
 - `Orbit-Driftwatch` — separate observable multi-agent systems showcase.
-- `DGAF-Framework` — separate governance/evaluation research track.
+- [Agentic Governance Orchestrator (proposed successor name for DGAF)](https://github.com/ndrorchestration/DGAF-Framework) — separate governance/evaluation research track.
 - `ai-governance-frameworks` — separate framework-mapping repository.
 
 These relationships describe portfolio architecture; they are not mutual validation claims.
